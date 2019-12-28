@@ -1,0 +1,55 @@
+{% extends "ext/ext.html" %}
+
+{% block style %}{% endblock %}
+
+{% block body %}
+<header>
+	<div class = "pos-f-t">
+		<div class = "collapse" id = "navbarToggleExternalContent">
+			<div class = "bg-dark p-4">
+				<h5 class = "text-white h4"> Collapsed content </h5>
+				<span class = "text-muted"> Toggleable via the navbar brand. </span>
+				<li class = "nav-item dropdown">
+						<span class = "nav-link dropdown-toggle"
+						id = "navbarDropdown"
+						role = "button"
+						data - toggle = "dropdown"
+						aria - haspopup = "true"
+						aria - expanded = "false">
+						i_cat
+					</span>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+			</div>
+		</div>
+		<nav class="navbar navbar-dark bg-dark">
+			<a href="/" class="text-white">
+				<h3 class="masthead-brand" style="margin: none !important;">
+                    <img
+                        src="{{ url_for('static',
+                        filename='img/fav/favicon.ico') }}"
+                        width="30"
+                        height="23">atalog</h3>
+			</a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarToggleExternalContent"
+				aria-controls="navbarToggleExternalContent"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+				style="word-wrap: unset;">
+					<span class="navbar-toggler-icon"></span>
+			</button>
+		</nav>
+	</div>
+</header>
+{% endblock %}
+
+{% block auth %}{% endblock %}

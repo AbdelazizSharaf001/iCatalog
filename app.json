@@ -1,0 +1,7 @@
+{
+    "name": "iCatalog",
+    "description": "An assignment for UdacityFSND item_catlog project",
+    "repository": "https://github.com/AbdelazizSharaf001/iCatalog",
+    "logo": "https://github.com/AbdelazizSharaf001/iCatalog/i_catalog/static/img/fav/android-chrome-512x512.png",
+    "keywords": ["python", "flask", "Flask-SQLAlchemy"]
+}

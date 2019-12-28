@@ -1,0 +1,8 @@
+.*/
+*.pyc
+*~
+*.db
+*.sqlite3
+i_catalog/secrets/FB_app_secrets.json
+__pycache__/
+i_catalog/__pycache__/

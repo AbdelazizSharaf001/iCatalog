@@ -1,0 +1,73 @@
+{% extends "ext/cover.html" %}
+
+{% block content %}
+<div class="col-lg-9 col-md-9 col-sm-9" style="margin:auto">
+    <h3 class="title cover-heading text-info"
+        >Confirm</h3>
+    <div class="box">
+
+    <form class="form-confirm" method="POST" action="">
+
+        <div class="alert alert-secondary text-danger">
+            <h5>Be aware!</h5><br/>
+            No back after confirming, and all data will be lost<br>
+            you still have time for thinking<a
+                class="text-primary float-right"
+                href="{{ url_for('main.catalog') }}"
+                >Go back ></a>.
+        </div>
+
+        <div class="form-group">
+            <label
+                class="control-label"
+                for="password"
+                aria-label="password"
+                >Confirm Password</label>
+            <input
+                type="password"
+                id="inputPassword"
+                class="form-control has-feedback"
+                name="password"
+                placeholder="Password"
+                required
+            />
+        </div>
+
+        <div class="form-group">
+            <div class="form-control-plaintext custom-control
+                custom-checkbox mr-1"
+                title="Confirm Deletion.">
+                <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    name="confirm"
+                    id="confirm">
+                <label
+                    class="custom-control-label"
+                    for="confirm"
+                    aria-label="confirm"
+                    >Confirm Deletion</label>
+                <button
+                    type="submit"
+                    class="btn btn-danger float-right"
+                    id="confirm">Delete</button>
+            </div>
+        </div>
+
+    </form>
+
+    <div>
+        <hr>
+        {% with messages=get_flashed_messages() %}
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-danger">
+            {{ msg }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "ext/cover.html" %}
+
+{% block content %}
+<div class="col-lg-4 col-md-7 col-sm-12" style="margin:auto">
+    <div class="text-center">
+        <h1 class="cover-heading text-danger">iCatalog</h1>
+        <h5>Helpful learning resources
+            <br>As a catalog built by the community.
+        </h5>
+        <p class="lead">
+            <a href="{{ url_for('main.catalog') }}"
+            class="btn btn-lg btn-secondary">Browse catalog</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

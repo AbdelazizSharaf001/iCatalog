@@ -1,0 +1,23 @@
+{%extends "ext/cover.html" %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="cover-heading text-info">API</h1>
+    <p class="lead text-dark">
+        <b class="text-primary">For Now</b>
+        we are providing our API<br>
+        as only json API for just reading data
+    </p>
+    <p class="lead">
+        <a href="{{ url_for('api.json') }}"
+            class="btn btn-info">{ json } API</a>
+        <a href=""
+            class="btn btn-dark">
+            <img
+                height="20"
+                src="{{ url_for('static',
+                                filename='img/GitHub-Mark-32px.png') }}"
+                > Docs on Github</a>
+    </p>
+</div>
+{% endblock %}

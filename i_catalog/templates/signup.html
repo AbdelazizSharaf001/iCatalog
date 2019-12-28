@@ -1,0 +1,91 @@
+{% extends "ext/cover.html" %}
+
+{% block content %}
+<div class="col-lg-4 col-md-7 col-sm-9" style="margin:auto">
+    <h3 class="title cover-heading text-info"
+        >Sign Up<a
+            class="text-primary float-right"
+            href="{{ url_for('auth.login') }}"
+            ><sub>Login ></sub></a></h3>
+    <div class="box">
+        {% with messages=get_flashed_messages() %}
+     	   {% if messages %}
+            <div class="alert alert-info">
+                {{ messages[0] }}
+            </div>
+        	{% endif %}
+        {% endwith %}
+
+		<form class="form-signup" method="POST" action="">
+		
+			<div class="form-group">
+				<input
+					type="text"
+					id="inputName"
+					class="form-control has-feedback"
+					name="name"
+					placeholder="Name"
+					required
+					autofocus
+				/>
+			</div>
+		
+			<div class="form-group">
+				<input
+					type="email"
+					id="inputEmail"
+					class="form-control has-feedback"
+					name="email"
+					placeholder="Email address"
+					required
+				/>
+			</div>
+		
+			<div class="form-group">
+				<input
+					type="password"
+					id="inputPassword"
+					class="form-control has-feedback"
+					name="password"
+					placeholder="Password"
+					required
+				/>
+			</div>
+
+			<div class="form-group">
+				<input hidden
+					name="state"
+					id="state"
+					value="{{ state }}"
+				/>
+                <button
+                    class="btn btn-info btn-block"
+                    type="submit"
+                   >Sign up</button>
+			</div>
+		
+		</form>
+		
+		<div class="text-center" id="soc-log">
+			<hr>
+			<button
+				id="Gsign"
+				class="btn text-uppercase btn-sm btn-danger"
+                >Google</button>
+            <button
+                id="FBsign"
+                class="btn text-uppercase btn-sm btn-primary"
+                >Facebook</button>
+		</div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extjs %}
+<script>
+    var oAuth	= "{{ url_for('oAuth.oAuthState')}}",
+        goAuth	= "{{ url_for('oAuth.gconnect')}}";
+</script>
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

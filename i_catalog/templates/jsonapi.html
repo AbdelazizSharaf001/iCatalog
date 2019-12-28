@@ -1,0 +1,127 @@
+{%extends "ext/cover.html" %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="cover-heading text-info">{ json } API</h1>
+    <p class="lead text-info">
+        Test the API endpoints <span class="text-muted">(as Guest)</span>
+    </p>
+
+    <p class="lead">
+        <button
+            data-toggle="modal"
+            data-target="#api_view"
+            data-exec="{{ url_for('api.json_cat') }}"
+            class="btn btn-light"
+            >All Catalog</button>
+        <button
+            data-toggle="modal"
+            data-target="#api_view"
+            data-exec="{{ url_for('api.json_cats') }}"
+            class="btn btn-light"
+            >categories</button>
+        <button
+            data-toggle="modal"
+            data-target="#api_view"
+            data-exec="{{ url_for('api.json_items') }}"
+            class="btn btn-light"
+            >items</button>
+    </p>
+    <p class="lead">
+        <div class="form-group m-1 col-md-6 mr-auto ml-auto">
+            <div class="input-group mb-3">
+                <input
+                    id="c_id"
+                    type="number"
+                    class="form-control"
+                    placeholder="Catagory ID">
+                <input
+                    id="i_id"
+                    type="number"
+                    class="form-control"
+                    placeholder="Item ID">
+            </div>
+        </div>
+    </p>
+    <p class="lead">
+        <button
+            data-toggle="modal"
+            data-target="#api_view"
+            data-exec="{{ url_for('api.json_catx', c_id=1) }}"
+            class="btn btn-light"
+            type="button"
+            >category</button>
+        <button
+            data-toggle="modal"
+            data-target="#api_view"
+            data-exec="{{ url_for('api.json_itemx', c_id=1, i_id=2) }}"
+            class="btn btn-light"
+            type="button"
+            >Item</button>
+    </p>
+
+    <hr>
+    <div class="card">
+        <div class="card-header text-info">
+            Ajax model with jQuery for API Auth.
+        </div>
+        <pre
+            class="card-body h-50 text-left"
+            style="user-select: all;"
+            >{{ api_jq }}</pre>
+    </div>
+</div>
+
+{% block modals %}
+{{ super() }}
+<div
+    class="modal fade"
+    id="api_view"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="api_view"
+    aria-hidden="true">
+    <div
+        class="modal-dialog modal-dialog-scrollable modal-xl
+        modal-dialog-centered"
+        role="document">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
+                <h5
+                    class="modal-title"
+                    id="itemTitle">END_POINT_NAME</h5>
+                <span
+                    class="close text-warning"
+                    style="cursor: pointer;"
+                    data-dismiss="modal"
+                    aria-label="Close">
+                        &times;</span>
+            </div>
+            <pre class="modal-body text-light"
+                style="user-select: text;">...</pre>
+            <div class="modal-footer text-left border-secondary">
+                <div
+                    class="text-muted w-100"
+                    >api schema
+                    <span readonly id="api_s"
+                        class="text-light"
+                        style="user-select: all;"
+                        >no data</span>
+                </div>
+                <div
+                    class="text-muted w-100"
+                    style="margin-right: auto;"
+                    >api link
+                    <span class="text-light" id="api_l">no data</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% endblock %}
+
+{% block extjs %}
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,214 @@
+{% extends "ext/inner.html" %}
+
+{% block content %}
+
+
+<div class="card" style="height: 90%;">
+    <div class="card-header border-0">
+        <ul
+            class="nav nav-tabs card-header-tabs"
+            id="myTab"
+            role="tablist">
+            <li>
+                <a
+                    class="nav-link active"
+                    href="#profile"
+                    aria-controls="profile"
+                    role="tab"
+                    data-toggle="tab"
+                    >Profile</a>
+            </li>
+            <li>
+                <a
+                    class="nav-link"
+                    href="#p_items"
+                    aria-controls="p_items"
+                    role="tab"
+                    data-toggle="tab"
+                    >My items</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Tab panes -->
+    <div class="tab-content h-100 p-3">
+        <div role="tabpanel" class="tab-pane active" id="profile">
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <div class="card bg-dark text-warning">
+                        <div class="card-body">
+                        <h5 class="card-title text-danger">Be carful</h5>
+                        <p class="card-text">Most of data described in this
+                            section are <span class="text-danger">sensitive
+                            data</span> that should be always kept secret.
+                            <br/>Do not share it in any way.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-12 mb-2">
+                    <div class="card">
+                        <form class="card-body" method="POST"
+                            action="{{ url_for('auth.chpwd') }}">
+                            <h5 class="card-title">Login</h5>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                    >@email</span>
+                                </div>
+                                <span
+                                readonly class="form-control text-nowrap"
+                                aria-label="Username"
+                                >{{ current_user.email }}</span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                    >password</span>
+                                </div>
+                                <input
+                                name="chpwd"
+                                class="form-control"
+                                aria-label="New Password"
+                                placeholder="New Password">
+                            </div>
+                            <button
+                                class="btn btn-dark float-right"
+                                type="submit"
+                                >Change Password</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">API credentials</h5>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                    >ID</span>
+                                </div>
+                                <span
+                                class="form-control text-nowrap bg-light"
+                                aria-label="ID"
+                                style="user-select: all; overflow: hidden;"
+                                >{{ current_user.public_id }}</span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                    >Token</span>
+                                </div>
+                                <span
+                                class="form-control text-nowrap bg-light"
+                                aria-label="Token"
+                                style="user-select: all; overflow: hidden;"
+                                >{{ current_user.public_token }}</span>
+                            </div>
+                            <a class="btn btn-dark"
+                            href="{{ url_for('auth.reset_token') }}"
+                            >Reset token</a>
+                            <a class="btn btn-info float-right"
+                            href="{{ url_for('api.json') }}"
+                            >Use API</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane h-100" id="p_items">
+            <div class="p-2" style="height: 90%;">
+                <div
+                    style="overflow-y: scroll;"
+                    class="col-6 col-sm-12 h-100 float-left" dir="rtl">
+                    {% for i in items|reverse %}
+                    <div
+                        class="list-group-item list-group-item-action"
+                        dir="ltr">
+                        <span
+                            data-toggle="modal"
+                            data-target="#item"
+                            data-catagory="{{ i.catagory_id }}"
+                            data-item="{{ i.public_id }}"
+                            class="btn btn-light text-success">{{ i.name }}</span>
+                        {% if current_user.is_authenticated and
+                            (i.usr_id == current_user.public_id or
+                            current_user.id == 0) %}
+                        <span class="float-right">
+                            <a
+                                href="{{ url_for('main.edit_item' ,i_id=i.public_id) }}"
+                                class="btn btn-sm btn-outline-primary"
+                                >&#9998;</a>
+                            <a
+                                href="{{ url_for('main.del_item' ,i_id=i.public_id) }}"
+                                class="btn btn-sm btn-outline-danger"
+                                >&times;</a>
+                        </span>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% block modals %}
+{{ super() }}
+<div
+    class="modal fade"
+    id="item"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="item"
+    aria-hidden="true">
+    <div
+        class="modal-dialog modal-dialog-centered"
+        role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5
+                    class="modal-title"
+                    id="itemTitle">Item name</h5>
+                <span
+                    class="close"
+                    style="cursor: pointer;"
+                    data-dismiss="modal"
+                    aria-label="Close">
+                        &times;</span>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <div
+                    class="text-muted"
+                    style="margin-right: auto;"
+                    >last update
+                    <span class="text-dark" id="l_update"></span>
+                </div>
+                {% if current_user.is_authenticated %}
+                <a
+                    id="iEdit"
+                    type="button"
+                    class="btn btn-info">
+                        <span aria-hidden="true">&#9998;</span> Edit</a>
+                <a
+                    href=""
+                    id="iDelete"
+                    type="button"
+                    class="btn btn-danger"
+                    ><span aria-hidden="true">&times;</span> Delete</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% endblock %}

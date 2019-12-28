@@ -1,0 +1,296 @@
+{% extends "ext/ext.html" %}
+
+{% block reponsive %}{% endblock %}
+
+{% block style %}
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+
+{% block mesages %}
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+<div
+    id="hide-this"
+    class="position-absolute w-100 h-100 bg-dark"
+    style="z-index: 500;">
+    <div class="row h-100 w-100">
+        <div class="col-12 align-self-center">
+            <div
+                class="mx-auto bg-light w-50 p-3 rounded text-muted"
+                style="height: 250px !important; overflow: auto;"
+                >{% with msg=messages[0].split('\n') %}
+                    {% for x in msg %}{{x}}<br>&emsp;{% endfor %}
+                    {% endwith %}</div>
+            <div
+                id="hide-counter"
+                class="bg-light mx-auto rounded text-muted text-center p-1"
+                style="width: 2em; height: 2em; position: relative;
+                top: 2em; "
+                >5</div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endwith %}
+{% endblock %}
+
+<header class="w-100" style="position: fixed; z-index: 1;">
+	<div class="pos-f-t">
+        <div
+            class="collapse navbarToggleExternalContent"
+            style="z-index: 49; position: absolute;"
+            >
+			<div class="p-2 bg-dark w-100">
+				<div class="d-inline">
+                    <a class="btn btn-dark"
+                        href="{{ url_for('main.index') }}">Home</a>
+                    <a class="btn btn-dark"
+                        href="{{ url_for('main.about') }}">About</a>
+
+					{% if current_user.is_authenticated %}
+                    <a class="btn btn-dark"
+                        href="{{ url_for('main.catalog') }}">catalog</a>
+                    <a class="btn btn-dark"
+                        href="{{ url_for('auth.logout') }}">Logout</a>
+
+					{% else %}
+                    <a class="btn btn-dark"
+                        href="{{ url_for('auth.login') }}">Login</a>
+                    <a class="btn btn-dark"
+                        href="{{ url_for('auth.signup') }}">Sign up</a>
+					{% endif %}
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<nav class="navbar navbar-dark bg-dark">
+            <a
+                href="{{ url_for('main.catalog') }}"
+                class="text-white">
+				<h3 class="masthead-brand" style="margin: none !important;">
+                    <img
+                        src="{{ url_for('static',
+                                        filename='img/fav/favicon.ico') }}"
+                        width="30"
+                        height="23" >atalog
+				</h3>
+            </a>
+            <div
+                style="z-index: 50;">
+                <form class="form-inline ml-auto">
+                    <div
+                        class="collapse navbarToggleExternalContent
+                        form-group input-group md-form my-0 mr-2">
+                        <input
+                            type="search" disabled
+                            class="form-control bg-dark
+                            border-secondary border-right-0 border-left-0
+                            border-bottom-0 text-warning"
+                            placeholder="Search (version+)"
+                            aria-label="Search"
+                            title="Search (scedualed for next version)">
+                    </div>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target=".navbarToggleExternalContent"
+                        aria-controls="navbarToggleExternalContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        ><span class="navbar-toggler-icon"></span>
+                    </button>
+                </form>
+            </div>
+		</nav>
+	</div>
+</header>
+	
+<main class="h-100" style="padding-top: 56px;">
+	<div class="h-100 row col-lg-12 col-md-12 col-sm-12" style="height: 94%;">
+		<div class="h-100 col-lg-3 col-md-4 col-sm-4 bg-dark text-white p-3">
+			<h4>Catagory
+				{% if current_user.is_authenticated %}
+                <sub
+                    class="btn btn-success btn-sm
+                    new-Catagory float-right"
+                    style="font-size: 0.7em; cursor: pointer;"
+                    data-toggle="modal"
+                    data-target="#Catagory"
+                    data-exec="{{ url_for('main.new_cat') }}"
+                    >&#9187; init</sub>
+				{% endif %}
+            </h4>
+            <div class="clearfix"></div>
+			<div style="height: 90%; overflow-y: scroll;" dir="rtl">
+				<div dir="ltr">
+				{% for cat in cats %}
+                <div
+                    class="list-group-item list-group-item-action
+                    bg-dark text-white">
+                    <a
+                        href="{{ url_for('main.category', c_id=cat.id) }}"
+                        >{{ cat.name }}</a>
+
+                    {% if cat.name != 'Uncatagorized' %}
+                    {% if current_user.is_authenticated and
+                        (cat.creator == current_user.public_id or
+                        current_user.id == 0) %}
+                    {% if current_user.id == 0 %}
+                    <a
+                        href="{{ url_for('main.del_catagory', c_id=cat.id) }}"
+                        class="btn btn-outline-danger btn-sm mr-1 float-right"
+                        aria-hidden="true">&times;</a>
+                    {% endif %}
+                    <button
+                        data-toggle="modal"
+                        data-target="#Catagory"
+                        data-exec="{{ url_for('main.edit_cat') }}"
+                        data-id="{{ cat.id }}"
+                        data-name="{{ cat.name }}"
+                        class="btn btn-outline-info btn-sm mr-1 float-right"
+                        aria-hidden="true">&#9998;</button>
+                    {% endif %}
+                    {% endif %}
+                </div>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="h-100 col-lg-9 col-md-8 col-sm-8 p-2">
+            <div
+                class="col-lg-12 col-md-12 col-sm-12"
+                style="height: 96.5% !important;">
+                
+                <div class="d-inline">
+                    {% if current_user.is_authenticated %}
+                    <div
+                        class="btn-toolbar mb-3"
+                        role="toolbar"
+                        aria-label="Toolbar with button groups">
+                        <a
+                            href="{{ url_for('main.add_item') }}"
+                            class="btn-group align-middle"
+                            role="group"
+                            title="New item">
+                            <span
+                                class="btn btn-outline-success mr-1"
+                                aria-label="new">&#9187; New</span>
+                        </a>
+                        <a
+                            href="{{ url_for('main.profile') }}"
+                            class="btn-group align-middle"
+                            role="group"
+                            title="User profile">
+                            <span
+                                class="btn btn-outline-success mr-1"
+                                aria-label="new">&#x1F464; Profile</span>
+                        </a>
+                        <div class="input-group">
+                            <h5 class="text-info form-control">
+                                Welcome back, {{ current_user.name }}!
+                            </h5>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div
+                        class="btn-toolbar mb-3"
+                        role="toolbar"
+                        aria-label="Toolbar with button groups">
+                        <a
+                            href="{{ url_for('auth.signup') }}"
+                            class="btn-group align-middle"
+                            role="group"
+                            aria-label="First group">
+                            <h5
+                                class="btn btn-outline-secondary btn-sm mr-1"
+                                aria-label="new">Welcome</h5>
+                            </a>
+                        <div class="input-group">
+                            <marquee
+                                class="text-muted form-control form-control-sm">
+                                You are currentely browsing as guest user,
+                                <a href="{{ url_for('auth.login') }}"
+                                    >login</a> and initiate your catalog
+                            </marquee>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="clearfix"></div>
+
+				{% block content %}
+				{% block modals %}
+                <div
+                    class="modal fade bg-dark"
+                    id="Catagory"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="add_cat"
+                    aria-hidden="true">
+                    <div
+                        class="modal-dialog modal-dialog-centered"
+                        role="document">
+                        <div class="modal-content">
+                            <form action="{{ url_for('main.new_cat') }}" method="POST"
+                                id="form_catagory">
+                            <div class="modal-header">
+                                <h5
+                                    class="modal-title"
+                                    id="itemTitle">New Catagory</h5>
+                                <span
+                                    class="close"
+                                    style="cursor: pointer;"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                    >&times;</span>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group mb-2 mr-1 w-100">
+                                    <input
+                                        type="text"
+                                        class="form-control has-feedback"
+                                        id="cat_name"
+                                        name="cat_name"
+                                        placeholder="Catagory name"
+                                        required>
+                                    <input
+                                        id="cat_id"
+                                        name="cat_id"
+                                        hidden>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-0">
+                                <div
+                                    class="text-muted"
+                                    style="margin-right: auto;"
+                                    >Enter a unique meaningful letteral name
+                                </div>
+                                <button
+                                    type="submit"
+                                    class="btn btn-outline-dark"
+                                    >&#9187; Add Catagory</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+                {% endblock %}
+			</div>
+			<div class="clearfix"></div>
+			<footer class="mastfoot mt-auto text-center">
+				<div class="inner text-info">
+					<p>Coded with &#9825; By Abdelaziz Sharaf</p>
+				</div>
+			</footer>
+		</div>
+	</div>
+</main>
+
+{% endblock %}
