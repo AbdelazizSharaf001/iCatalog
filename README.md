@@ -7,10 +7,12 @@
 [![Lang](https://img.shields.io/badge/Lang-Python-darkblue.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
 [![DB](https://img.shields.io/badge/DB-sqlite-blue.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
 [![Dependancies](https://img.shields.io/badge/Dependancies-passing-darkcyan.svg)](/docs#dependancies)
+[![Demo](https://img.shields.io/badge/Demo-up-red.svg)](https://icatalog.herokuapp.com)
 [![Dependancies](https://img.shields.io/badge/License-GPL%203.0-black.svg)](https://github.com/AbdelazizSharaf001/iCatalog/blob/master/LICENSE)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b5ac5d891a3964aa896a)
+
 
 
 # Contents
@@ -53,22 +55,23 @@ catalog for books, places, websites.. etc, that could
 help anyone to enhance his oportunities, skills & cv.
 
 <a  style="float: right;"
-    href="icatalog.herokuapp.com/about" target="_blank"
->See also ></a>
+    href="https://icatalog.herokuapp.com/about"
+    target="_blank">See also ></a>
 </pre>
 
 <pre>
-<h1>Why 2!</h1>
+<h2>Why 2!</h2>
 Started from version 2 as this project is a continue of a
 previous version of native flask app that was not completed
 
 dispite incompletion, all starting modules has been changed
-for educational purposes so it's now the start is from step
-2 to let myself remember how log it taken me to learn and
-what I gained and learned
+for educational purposes so it's now is from step 2 to let
+myself remember how log it taken me to learn and what I gained
 </pre>
 
 # Disclaimer
+
+> This repo is initiated for educational purposes
 
 - We do our best to enhance this app,
   <br>but tt's still not recommended to use the app as is
@@ -80,22 +83,25 @@ what I gained and learned
   I advice you to write the code yourself in the
   <br>beginning so you understand what have been written and
   <br>thin you could work around it well
+  >this msg is specially for Udacity educators
   
-  I'm also not responsple for any kind of usage of
+- I'm also not responsple for any kind of usage of
   <br>this code except by me, you are the only responsple of
   <br>what you do.
-  >this msg is specially for Udacity educators
 
-> This repo is initiated for educational purposes
+# Notice
+- This project does not recieve any updates now a days
 
+# Contribbters
+| contributer           | date         | rule        |
+|-----------------------|--------------|-------------|
+| [Abdelaziz Sharaf][1] | Dec 28, 2019 | Author      |
 
-
-# Author
-
-**[Abdelaziz Sharaf](https://github.com/AbdelazizSharaf001)**
 
 # License
 
 Copyright © 2019,
 [Abdelaziz Sharaf](https://github.com/AbdelazizSharaf001)
 under the [GPL License](LICENSE).
+
+  [1]: https://github.com/AbdelazizSharaf001
