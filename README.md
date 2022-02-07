@@ -3,11 +3,13 @@
 ### Full Stack UdacityND Project
 
 [![Version](https://img.shields.io/badge/Version-2.0.0-darkgreen.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
-[![Build](https://img.shields.io/badge/Build-Stable-darkgreen.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
+[![Build](https://img.shields.io/badge/Build-Passing-yellow.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
 [![Lang](https://img.shields.io/badge/Lang-Python-darkblue.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
 [![DB](https://img.shields.io/badge/DB-sqlite-blue.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
-[![Dependancies](https://img.shields.io/badge/Dependancies-passing-darkcyan.svg)](/docs#dependancies)
-[![Demo](https://img.shields.io/badge/Demo-up-red.svg)](https://icatalog.herokuapp.com)
+[![Dependancies](https://img.shields.io/badge/Dependancies-passing-yellow.svg)](/docs#dependancies)
+[![Demo](https://img.shields.io/badge/Demo-UP-green.svg)](https://icatalog.herokuapp.com)
+[![API](https://img.shields.io/badge/API-UP-green.svg)](https://icatalog.herokuapp.com/api/v1)
+[![Auth](https://img.shields.io/badge/Auth-No-red.svg)](https://icatalog.herokuapp.com/api/v1)
 [![Dependancies](https://img.shields.io/badge/License-GPL%203.0-black.svg)](https://github.com/AbdelazizSharaf001/iCatalog/blob/master/LICENSE)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
