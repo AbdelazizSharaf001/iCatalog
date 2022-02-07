@@ -39,10 +39,10 @@ def create_app(config=None):
 
     try:
         # Development
-        if config in ['dev', 'Development', 'DevelopmentConfig']:
+        if config in ['Dev', 'Development', 'DevelopmentConfig']:
             app.config.from_object(DevelopmentConfig(secrets))
         # Test
-        elif config in ['test', 'testing', 'testingconfig']:
+        elif config in ['Test', 'Testing', 'TestingConfig']:
             app.config.from_object(TestingConfig(secrets))
         # production
         else:
