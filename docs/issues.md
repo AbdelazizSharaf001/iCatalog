@@ -42,10 +42,10 @@ For bugs and feature requests, [Kindly create an issue](/../../issues/new).
         you are runing the server with `adhoc` or self signed
         certificate that hasn't been verified
 
-        use `start.sh` to generate ssl crt & key then run the from
+        use `start.sh` to generate ssl crt & key then run
         the script using `ssl_cert` option and not adhoc,
 
-        note that you could modify that bash file to fit your needs
+        > note that you could modify that bash file to fit your needs
 
     2. Sign in button disappeared
 
