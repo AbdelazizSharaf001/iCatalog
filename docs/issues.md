@@ -29,7 +29,7 @@ For bugs and feature requests, [Kindly create an issue](/../../issues/new).
     2. template syntax error along with an instance of SQLAlchemy
 
         when an error is raised from a template showing muliple
-        statements of html as an error place, just work aound last
+        statements of html as an error place, just work around last
         things you modifed in the template related to SQLAlchemy,
         and note that the error arised is not correct, the correct
         is that you have syntax error in a statement (usually if)
