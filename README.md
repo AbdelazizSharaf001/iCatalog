@@ -95,9 +95,7 @@ myself remember how log it taken me to learn and what I gained
 - This project does not recieve any updates now a days
 
 # Contribbters
-| contributer           | date         | rule        |
-|-----------------------|--------------|-------------|
-| [Abdelaziz Sharaf][1] | Dec 28, 2019 | Author      |
+- [Abdelaziz Sharaf][1] (Author) - Dec 28, 2019
 
 
 # License
