@@ -3,7 +3,7 @@
 ### Full Stack UdacityND Project
 
 [![Version](https://img.shields.io/badge/Version-2.0.0-darkgreen.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
-[![Build](https://img.shields.io/badge/Build-Passing-yellow.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
+[![Build](https://img.shields.io/badge/Build-down-black.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
 [![Lang](https://img.shields.io/badge/Lang-Python-darkblue.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
 [![DB](https://img.shields.io/badge/DB-sqlite-blue.svg)](https://github.com/AbdelazizSharaf001/iCatalog)
 [![Dependancies](https://img.shields.io/badge/Dependancies-passing-yellow.svg)](/docs#dependancies)
@@ -85,7 +85,7 @@ myself remember how log it taken me to learn and what I gained
   I advice you to write the code yourself in the
   <br>beginning so you understand what have been written and
   <br>thin you could work around it well
-  >this msg is specially for Udacity educators
+  > this msg is especially for Udacity-FSND learners
   
 - I'm also not responsple for any kind of usage of
   <br>this code except by me, you are the only responsple of
