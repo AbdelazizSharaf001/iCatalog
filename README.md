@@ -11,9 +11,11 @@
 [![API](https://img.shields.io/badge/API-down-red.svg)](#)
 [![Auth](https://img.shields.io/badge/Auth-No-red.svg)](#)
 [![Dependancies](https://img.shields.io/badge/License-GPL%203.0-black.svg)](https://github.com/AbdelazizSharaf001/iCatalog/blob/master/LICENSE)
+
+[//]: # ( [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) )
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b5ac5d891a3964aa896a)
 
-<!--- [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) --->
+
 
 # Contents
 
