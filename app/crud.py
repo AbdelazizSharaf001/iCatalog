@@ -60,10 +60,9 @@ def cuCRUD(r):
             db.session.add(r)
             db.session.commit()
             return r
-        else:
-            return None
     except Exception:
-        return None
+        pass
+    return None
 
 
 # \read

@@ -12,8 +12,8 @@
 [![Auth](https://img.shields.io/badge/Auth-No-red.svg)](#)
 [![Dependancies](https://img.shields.io/badge/License-GPL%203.0-black.svg)](https://github.com/AbdelazizSharaf001/iCatalog/blob/master/LICENSE)
 
-[//]: # ( [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) )
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b5ac5d891a3964aa896a)
+<!--- ( [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) --->
 
 
 
@@ -41,7 +41,7 @@
 - [Project structure](https://github.com/AbdelazizSharaf001/iCatalog/tree/master/docs/structure.md)
 - [Postman collection](https://documenter.getpostman.com/view/9649012/SWLb8UxS)
 - [Contribute](https://github.com/AbdelazizSharaf001/iCatalog/tree/master/docs/contribute.md)
-  * [Contributing](https://github.com/AbdelazizSharaf001/iCatalog/tree/master/CONTRIBUTING.md)
+  * [Contributing](https://github.com/AbdelazizSharaf001/iCatalog/tree/master/docs/CONTRIBUTING.md)
   * [Contributers](https://github.com/AbdelazizSharaf001/iCatalog/tree/master/docs/contributers.md)
 - [issues](https://github.com/AbdelazizSharaf001/iCatalog/tree/master/docs/issues.md)
 
